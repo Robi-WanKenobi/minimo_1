@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Detalles de la asignatura</h1>
+
+  <div class="row">
+    <div class="col-md-12" style="padding: 15px">
+      <a [routerLink]="['/home']" class="btn btn-info">Atrás</a>
+      <a [routerLink]="['/subject-edit', subject._id]" class="btn btn-success">Editar</a>
+      <button class="btn btn-danger" type="button" (click)="deleteSubject(subject._id)">Borrar</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="well">
+        <h3 style="padding-bottom: 25px">Asignatura</h3>
+        <h4><strong>Nombre: </strong>{{ subject.nombre }}</h4>
+        <h4><strong>Estudios: </strong>{{ subject.estudios }}</h4>
+        <h4><strong>Cuatrimestre: </strong>{{ subject.cuatrimestre }}</h4>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="well">
+      <h3>Estudiantes</h3>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let s of subject.estudiantes">
+          <td>{{ s.nombre }}</td>
+          <td>{{ s.apellido }}</td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+</div>

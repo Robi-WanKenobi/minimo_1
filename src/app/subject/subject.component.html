@@ -1,0 +1,38 @@
+<h1>Asignaturas
+  <button type="button" class="btn btn-success" (click)="ngOnInit()">Limpiar filtro</button>
+</h1>
+
+<div class="well">
+  <table>
+    <tbody>
+    <tr>
+      <td><input (input)="filterNombre()" placeholder="Nombre" type="text" class="form-control" [(ngModel)]="nombre_filter" name="nombre" id="nombre" required></td>
+      <td><input (input)="filterEstudios()" placeholder="Estudios" type="text" class="form-control" [(ngModel)]="estudios_filter" name="nombre" id="estudios" required></td>
+      <td><input (input)="filterCuatri()" placeholder="Cuatrimestre" type="text" class="form-control" [(ngModel)]="cuatri_filter" name="nombre" id="cuatri" required></td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Nombre <a (click)="sortByName()" class="btn btn-info btn-xs">
+        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+      </a></th>
+      <th>Estudios</th>
+      <th>Cuatrimestre</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let subject of subjects">
+      <td>{{ subject.nombre }}</td>
+      <td>{{ subject.estudios }}</td>
+      <td>{{ subject.cuatrimestre }}</td>
+      <td align="right"><a [routerLink]="['/subject-details', subject._id]" class="btn btn-info btn-xs">
+        <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+      </a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

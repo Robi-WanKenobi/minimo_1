@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Añadir nueva asignatura</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="saveSubject()" #subjectForm="ngForm">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" [ngModel]="subject?.nombre" (ngModelChange)="subject.nombre = $event" name="nombre" id="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="tipo">Tipo</label>
+          <input type="text" class="form-control" [ngModel]="subject?.tipo" (ngModelChange)="subject.tipo = $event" name="tipo" id="tipo" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" [disabled]="!subjectForm.form.valid">Guardar</button>
+        </div>
+      </form>
+      <a [routerLink]="['']" class="btn btn-info">Atrás</a>
+    </div>
+  </div>
+</div>

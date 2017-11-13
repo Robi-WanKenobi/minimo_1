@@ -1,0 +1,26 @@
+<h1>Estudiantes
+  <a [routerLink]="['/student-create']" class="btn btn-primary btn-xs">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  </a>
+</h1>
+
+<div class="well">
+<table class="table">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let student of students">
+    <td>{{ student.nombre }}</td>
+    <td>{{ student.apellido }}</td>
+    <td align="right"><a [routerLink]="['/student-details', student._id]" class="btn btn-info btn-xs">
+      <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+    </a></td>
+  </tr>
+  </tbody>
+</table>
+</div>

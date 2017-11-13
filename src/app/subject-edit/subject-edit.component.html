@@ -1,0 +1,76 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="well">
+        <h4>Editar asignatura</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <form (ngSubmit)="updateSubject(subject._id)" #subjectForm="ngForm">
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="subject.nombre" name="nombre" id="nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="tipo">Estudios</label>
+                <input type="text" class="form-control" [(ngModel)]="subject.estudios" name="tipo" id="tipo" required>
+              </div>
+              <div class="form-group">
+                <label for="cuatri">Cuatrimestre</label>
+                <input type="text" class="form-control" [(ngModel)]="subject.cuatrimestre" name="cuatri" id="cuatri" required>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" [disabled]="!subjectForm.form.valid">Actualizar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <h4>Estudiantes actuales</h4>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Opciones</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let s of subject.estudiantes">
+            <td>{{ s.nombre }}</td>
+            <td>{{ s.apellido }}</td>
+            <td align="right"><a (click)="deleteStudent(subject._id, s._id)" class="btn btn-danger btn-xs">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="well">
+        <h4>Todos los estudiantes</h4>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Opciones</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let student of students">
+            <td>{{ student.nombre }}</td>
+            <td>{{ student.apellido }}</td>
+            <td align="right"><a (click)="addStudent(subject._id, student._id)" class="btn btn-primary btn-xs">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+</div>
