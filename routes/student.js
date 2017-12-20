@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Student = require('../models/Student.js');
+var Subject = require('../models/Subject.js');
 
 /* GET ALL STUDENTS */
 router.get('/', function(req, res, next) {
@@ -44,11 +45,16 @@ router.delete('/:id', function(req, res, next) {
 });
 
 /* GET STUDENTS THAT THERE ARE NOT IN A SUBJECT */
-router.get('/:idsubject', function(req, res, next) {
-  Student.find({ "asignaturas": { "$ne": req.params.idsubject}}, function (err, result) {
+router.get('/not_in/:idsubject', function(req, res, next) {
+  Subject.findById(req.params.idsubject, 'estudiantes -_id').exec(function(err, result) {
     if (err) return next(err);
-    res.json(result);
+    console.log(result.estudiantes);
+    Student.find({ "_id": { "$nin": result.estudiantes}}, function (err, result) {
+      if (err) return next(err);
+      res.json(result);
+    });
   });
+
 });
 
 module.exports = router;
