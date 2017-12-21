@@ -1,13 +1,5 @@
 version: '3'
 services:
- mongo:
-  image: mongo
-  volumes:
-   - /data/mongodb/db:/data/db
-  ports:
-   - "27017:27017"
-
-
  api:
   build: .
   command: node ./bin/www
